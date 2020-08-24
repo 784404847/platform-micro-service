@@ -1,6 +1,6 @@
 FROM registry.cn-hangzhou.aliyuncs.com/wwj_dev/jdk8:3.0
 
-MAINTAINER JAVER <WUWENJUN>
+MAINTAINER JAVER <wejams>
 
 # 1. JVM配置： docker-compose.yml中根据具体环境需改配置
 ENV JVM_OPTS -Xmx1344M -Xms1344M -XX:MaxMetaspaceSize=256M -XX:MetaspaceSize=256M -XX:+UseG1GC -XX:MaxGCPauseMillis=100 -XX:+ParallelRefProcEnabled
