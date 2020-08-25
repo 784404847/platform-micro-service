@@ -21,8 +21,7 @@ ENV SKY_WALKING_AGENT -javaagent:/skywalking/skywalking-agent.jar -Dskywalking.a
 # -Dskywalking.agent.sample_n_per_3_secs=1
 #
 # # 5. SKY_WALKING_AGENT配置加载
-ARG JAVA_FILE
-ADD target/${JAVA_FILE} /${JAVA_FILE}
+ADD target/platform-gateway.jar /platform-gateway.jar
 
 # 6. 服务端口输出
 EXPOSE 8000
