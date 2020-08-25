@@ -1,6 +1,6 @@
 FROM registry.cn-hangzhou.aliyuncs.com/wwj_dev/jdk8:3.0
 
-MAINTAINER JAVER <wejams>
+MAINTAINER JAVER <wejam>
 
 # 1. JVM配置： docker-compose.yml中根据具体环境需改配置
 ENV JVM_OPTS -Xmx1344M -Xms1344M -XX:MaxMetaspaceSize=256M -XX:MetaspaceSize=256M -XX:+UseG1GC -XX:MaxGCPauseMillis=100 -XX:+ParallelRefProcEnabled
@@ -21,8 +21,8 @@ ENV SKY_WALKING_AGENT -javaagent:/skywalking/skywalking-agent.jar -Dskywalking.a
 # -Dskywalking.agent.sample_n_per_3_secs=1
 #
 # # 5. SKY_WALKING_AGENT配置加载
-ARG JAVA_FILE
-ADD target/${JAVA_FILE} /${JAVA_FILE}
+ARG module
+ADD target/${module} /${module}
 
 # 6. 服务端口输出
 EXPOSE 8000
