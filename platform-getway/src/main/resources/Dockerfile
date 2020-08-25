@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/wwj_dev/jdk8:3.0
+FROM registry.cn-hangzhou.aliyuncs.com/wwj_dev/jdk8:1.0
 
 MAINTAINER JAVER <wejams>
 
