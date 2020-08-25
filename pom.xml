@@ -15,7 +15,9 @@
     <artifactId>platform-micro-service</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-
+    <modules>
+        <module>platform-getway</module>
+    </modules>
     <properties>
         <!-- spring cloud & maven version-->
         <java.version>1.8</java.version>
