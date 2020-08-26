@@ -22,7 +22,7 @@ ENV SKY_WALKING_AGENT -javaagent:/skywalking/skywalking-agent.jar -Dskywalking.a
 #
 # # 5. SKY_WALKING_AGENT配置加载
 ARG module
-ADD target/${module} /${module}
+ADD target/${JAVA_FILE} /${JAVA_FILE}
 
 # 6. 服务端口输出
 EXPOSE 8000
