@@ -391,11 +391,11 @@
                 <!--                        <goals>-f pom.xml deploy</goals>-->
                 <!--                    </configuration>-->
                 <!--                </plugin>-->
-                <plugin>
-                    <groupId>com.spotify</groupId>
-                    <artifactId>dockerfile-maven-plugin</artifactId>
-                    <version>1.4.10</version>
-                </plugin>
+<!--                <plugin>-->
+<!--                    <groupId>com.spotify</groupId>-->
+<!--                    <artifactId>dockerfile-maven-plugin</artifactId>-->
+<!--                    <version>1.4.10</version>-->
+<!--                </plugin>-->
             </plugins>
         </pluginManagement>
     </build>
