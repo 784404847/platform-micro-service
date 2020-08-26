@@ -374,28 +374,28 @@
                         <showWarnings>true</showWarnings>
                     </configuration>
                 </plugin>
-                <!--                <plugin>-->
-                <!--                    <groupId>org.apache.maven.plugins</groupId>-->
-                <!--                    <artifactId>maven-release-plugin</artifactId>-->
-                <!--                    <version>${maven-release-plugin.version}</version>-->
-                <!--                    <configuration>-->
-                <!--                        <preparationGoals>clean validate</preparationGoals>-->
-                <!--                        <arguments>-Dmaven.javadoc.skip=true -Dmaven.test.skip=true</arguments>-->
-                <!--                        <tagNameFormat>@{project.version}</tagNameFormat>-->
-                <!--                        <autoVersionSubmodules>true</autoVersionSubmodules>-->
-                <!--                        &lt;!&ndash;git用户名&ndash;&gt;-->
-                <!--                        <username>release</username>-->
-                <!--                        &lt;!&ndash;git密码&ndash;&gt;-->
-                <!--                        <password>1qaz@WSX</password>-->
-                <!--                        &lt;!&ndash;mvn目标指令&ndash;&gt;-->
-                <!--                        <goals>-f pom.xml deploy</goals>-->
-                <!--                    </configuration>-->
-                <!--                </plugin>-->
-<!--                <plugin>-->
-<!--                    <groupId>com.spotify</groupId>-->
-<!--                    <artifactId>dockerfile-maven-plugin</artifactId>-->
-<!--                    <version>1.4.10</version>-->
-<!--                </plugin>-->
+                                <plugin>
+                                    <groupId>org.apache.maven.plugins</groupId>
+                                    <artifactId>maven-release-plugin</artifactId>
+                                    <version>${maven-release-plugin.version}</version>
+                                    <configuration>
+                                        <preparationGoals>clean validate</preparationGoals>
+                                        <arguments>-Dmaven.javadoc.skip=true -Dmaven.test.skip=true</arguments>
+                                        <tagNameFormat>@{project.version}</tagNameFormat>
+                                        <autoVersionSubmodules>true</autoVersionSubmodules>
+                                        <!--git用户名-->
+                                        <username>784404847@qq.com</username>
+                                        <!--git密码-->
+                                        <password>88621903h</password>
+                                        <!--mvn目标指令-->
+                                        <goals>-f pom.xml deploy</goals>
+                                    </configuration>
+                                </plugin>
+                <plugin>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>dockerfile-maven-plugin</artifactId>
+                    <version>1.4.10</version>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
