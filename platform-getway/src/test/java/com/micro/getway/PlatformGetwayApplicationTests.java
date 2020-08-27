@@ -1,4 +1,4 @@
-package getway;
+package com.micro.getway;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
