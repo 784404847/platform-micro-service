@@ -8,12 +8,12 @@ import lombok.extern.slf4j.Slf4j;
 import one.util.streamex.EntryStream;
 import one.util.streamex.StreamEx;
 import org.springframework.util.CollectionUtils;
-
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * jdk 1.8 集合类工具
@@ -200,6 +200,61 @@ public class CloU8 {
                 .groupingBy(mapKey);
     }
 
+    /**
+     * 获取集合中的某一个元素
+     *
+     * @param list     数组
+     * @param fieldFun 需要获取的值
+     * @param <L>>
+     * @param <V>
+     * @return
+     */
+    public static <L, V> Stream<V> pump8(Collection<L> list, Function<L, V> fieldFun) {
+
+        if (CollectionUtils.isEmpty(list) || fieldFun == null) {
+            return Stream.empty();
+        }
+        return list.stream().map(fieldFun);
+    }
+
+    /**
+     * 原生jdk
+     * 将list转为map ，适用于 k l 一对一情况
+     *
+     * @param list
+     * @param keyFun
+     * @param <K>
+     * @param <L>
+     * @return
+     */
+    public static <K, L> Map<K, L> index8(Collection<L> list,
+                                          Function<L, K> keyFun) {
+
+        if (CollectionUtils.isEmpty(list) || keyFun == null) {
+            return Maps.newHashMap();
+        }
+
+        return list.stream().collect(Collectors.toMap(keyFun, Function.identity(), (key1, key2) -> key2));
+    }
+
+
+    /**
+     * 原生jdk
+     *
+     * @param list
+     * @param keyFun
+     * @param <K>
+     * @param <L>
+     * @return
+     */
+    public static <K, L> Map<K, List<L>> indexMerge8(Collection<L> list, Function<L, K> keyFun) {
+
+        if (CollectionUtils.isEmpty(list) || keyFun == null) {
+            return Maps.newHashMap();
+        }
+        return list.stream().collect(Collectors.groupingBy(keyFun));
+    }
+
     /*test*/
     public static void main(String[] args) {
         List<Foo> list = Lists.newArrayList(
@@ -210,7 +265,7 @@ public class CloU8 {
                 new Foo().setNo(3).setName("t4").setPrice(new BigDecimal(2)),
                 new Foo().setNo(4).setName("t5").setPrice(new BigDecimal(4))
         );
-        Set<String> collect = pump(list, Foo::getName).collect(Collectors.toSet());
+//        Set<String> collect = pump(list, Foo::getName).collect(Collectors.toSet());
 //        System.out.print(JSON.toJSONString(collect));
 
         System.out.print(JSON.toJSONString(indexMerge(list, Foo::getName)));
