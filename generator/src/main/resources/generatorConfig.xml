@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <properties resource="jdbc.properties"/>
+
+    <!--mysql 连接数据库jar 这里选择自己本地位置,建议选择低版本号，否则主键对应的java属性上无法生成 tkmapper的 @Id 注解-->
+    <!--  <classPathEntry location="/Users/donggua/.m2/repository/mysql/mysql-connector-java/5.1.40/mysql-connector-java-5.1.40.jar"/>-->
+    <classPathEntry location="${jdbc.driver.location}"/>
+
+    <context id="testTables" targetRuntime="MyBatis3">
+        <!-- 配置pojo的序列化 -->
+        <!--<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />-->
+        <!-- 生成带有swagger和数据库备注的注释-->
+        <commentGenerator type="org.mybatis.generator.internal.DG2CommentGenerator">
+            <property name="suppressDate" value="true"/>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+        <jdbcConnection driverClass="${jdbc.driverClass}" connectionURL="${jdbc.url}" userId="${jdbc.user}"
+                        password="${jdbc.password}">
+        </jdbcConnection>
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
+           NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+            <!-- This property is used to specify whether MyBatis Generator should force the use of JSR-310 data types for DATE, TIME,
+            and TIMESTAMP fields, rather than using java.util.Date -->
+        </javaTypeResolver>
+
+        <!-- targetProject:生成model类的位置 -->
+        <javaModelGenerator targetPackage="${model.package.location}"
+                            targetProject="${target.project.location}">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false"/>
+            <!-- 从数据库返回的值被清理前后的空格 -->
+            <!--<property name="trimStrings" value="true" />-->
+            <!-- 给Model添加一个父类 -->
+          <!--  <property name="rootClass" value="com.moneed.ewallet.common.base.model.BaseModel"/>-->
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="${mapper.package.location}"
+                         targetProject="${target.project.location}">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <!-- targetPackage：mapper接口生成的位置 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="${mapper.package.location}"
+                             targetProject="${target.project.location}">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <table tableName="transaction_flow"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+
+            <!-- 部分类型数据转换-->
+            <columnOverride column="transaction_amount" javaType="java.math.BigDecimal"/>
+            <columnOverride column="transaction_time" javaType="java.time.LocalDateTime"/>
+            <columnOverride column="create_time" javaType="java.time.LocalDateTime"/>
+            <columnOverride column="update_time" javaType="java.time.LocalDateTime"/>
+        </table>
+
+    </context>
+</generatorConfiguration>

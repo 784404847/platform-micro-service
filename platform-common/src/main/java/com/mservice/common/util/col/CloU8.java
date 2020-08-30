@@ -1,4 +1,4 @@
-package com.micro.common.util.col;
+package com.mservice.common.util.col;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.base.Preconditions;

@@ -60,18 +60,6 @@
 
     <profiles>
         <profile>
-            <id>local</id>
-            <properties>
-                <!-- aliyun 容器仓库路径-->
-                <docker.repository>registry.cn-hangzhou.aliyuncs.com</docker.repository>
-                <!-- aliyun 容器仓库命名空间 -->
-                <docker.repository.namespace>wwj_dev</docker.repository.namespace>
-            </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-        </profile>
-        <profile>
             <id>dev</id>
             <properties>
                 <!-- aliyun 容器仓库路径-->

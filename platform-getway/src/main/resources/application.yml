@@ -14,5 +14,3 @@ spring:
         namespace: ${spring.profiles.active}
         username: nacos
         password: nacos
-
-

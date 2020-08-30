@@ -1,4 +1,4 @@
-package com.micro.common.util.concurrent;
+package com.mservice.common.util.concurrent;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import lombok.extern.slf4j.Slf4j;
