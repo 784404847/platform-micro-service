@@ -39,7 +39,7 @@
             <!-- 从数据库返回的值被清理前后的空格 -->
             <!--<property name="trimStrings" value="true" />-->
             <!-- 给Model添加一个父类 -->
-          <!--  <property name="rootClass" value="com.moneed.ewallet.common.base.model.BaseModel"/>-->
+            <!--  <property name="rootClass" value="com.moneed.ewallet.common.base.model.BaseModel"/>-->
         </javaModelGenerator>
 
         <sqlMapGenerator targetPackage="${mapper.package.location}"

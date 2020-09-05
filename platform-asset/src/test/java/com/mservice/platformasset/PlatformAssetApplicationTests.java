@@ -1,10 +1,10 @@
-package com.mservice.transaction;
+package com.mservice.platformasset;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PlatformTransactionApplicationTests {
+class PlatformAssetApplicationTests {
 
     @Test
     void contextLoads() {
