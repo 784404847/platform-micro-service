@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>transaction-center</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>transaction-center</name>
+    <description>交易模块</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <platform-common.version>1.0.0-SNAPSHOT</platform-common.version>
+    </properties>
+
+    <parent>
+        <groupId>com.new.mservice</groupId>
+        <artifactId>platform-micro-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.mew.mservice</groupId>
+            <artifactId>platform-common</artifactId>
+            <version>${platform-common.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>local</id>
+            <properties>
+                <!-- aliyun 容器仓库路径-->
+                <docker.repository>registry.cn-hangzhou.aliyuncs.com</docker.repository>
+                <!-- aliyun 容器仓库命名空间 -->
+                <docker.repository.namespace>wwj_dev</docker.repository.namespace>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <!-- aliyun 容器仓库路径-->
+                <docker.repository>registry.cn-hangzhou.aliyuncs.com</docker.repository>
+                <!-- aliyun 容器仓库命名空间 -->
+                <docker.repository.namespace>wwj_dev</docker.repository.namespace>
+            </properties>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <!-- aliyun 容器仓库路径-->
+                <docker.repository>registry.cn-hangzhou.aliyuncs.com</docker.repository>
+                <!-- aliyun 容器仓库命名空间 -->
+                <docker.repository.namespace>wwj_dev</docker.repository.namespace>
+            </properties>
+        </profile>
+        <profile>
+            <id>uat</id>
+            <properties>
+                <!-- aliyun 容器仓库路径-->
+                <docker.repository>registry.cn-hangzhou.aliyuncs.com</docker.repository>
+                <!-- aliyun 容器仓库命名空间 -->
+                <docker.repository.namespace>wwj_dev</docker.repository.namespace>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <!-- aliyun 容器仓库路径-->
+                <docker.repository>registry.cn-hangzhou.aliyuncs.com</docker.repository>
+                <!-- aliyun 容器仓库命名空间 -->
+                <docker.repository.namespace>wwj_dev</docker.repository.namespace>
+            </properties>
+        </profile>
+    </profiles>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <configuration>
+                    <repository>${docker.repository}/${docker.repository.namespace}/${project.artifactId}</repository>
+                    <tag>${project.version}</tag>
+                    <buildArgs>
+                        <JAVA_FILE>${project.build.finalName}.jar</JAVA_FILE>
+                    </buildArgs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
