@@ -18,6 +18,10 @@ spring:
           - dataId: common-actuator.yml
             group: DEFAULT_GROUP
             refresh: true
+        enabled: false
+
+      discovery:
+        enabled: false
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -35,25 +39,46 @@ spring:
       connection-timeout: 30000
 
 # tkmapper
-mapper:
-  mappers:
-    - tk.mybatis.mapper.common.Mapper
-  identity: MYSQL
-#  style: normal
-
-# pageHelper
-pagehelper:
-  helper-dialect: mysql
-  reasonable: false
-  row-bounds-with-count: true
-  support-methods-arguments: true
+#mapper:
+#  mappers:
+#    - tk.mybatis.mapper.common.Mapper
+#  identity: MYSQL
+##  style: normal
+#
+## pageHelper
+#pagehelper:
+#  helper-dialect: mysql
+#  reasonable: false
+#  row-bounds-with-count: true
+#  support-methods-arguments: true
 
 # mybatis
-mybatis:
+#mybatis:
+#  mapper-locations: classpath:com.mservice.transaction.mapper/*.xml
+#  type-aliases-package: com.mservice.transaction.model
+#  configuration:
+#    map-underscore-to-camel-case: true
+#    use-generated-keys: true
+
+mybatis-plus:
+  configuration:
+    default-enum-type-handler: org.apache.ibatis.type.EnumOrdinalTypeHandler
+    local-cache-scope: statement
+  global-config:
+    db-config:
+      id-type: auto
+      update-strategy: not_empty
   mapper-locations: classpath:com.mservice.transaction.mapper/*.xml
   type-aliases-package: com.mservice.transaction.model
-  configuration:
-    map-underscore-to-camel-case: true
-    use-generated-keys: true
 
 
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    enabled: true
+  group-configs:
+
+logging:
+  level:
+    root: debug
