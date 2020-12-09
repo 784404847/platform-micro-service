@@ -1,5 +1,6 @@
 package com.mservice.transaction.serivce;
 
+import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @Author: wejam
@@ -31,7 +33,7 @@ public class TransactionFlowService {
 
     public void selectTest() {
 //        LambdaQueryWrapper<TransactionFlow> lambda1 = new QueryWrapper<TransactionFlow>().lambda();
-        LambdaQueryChainWrapper<TransactionFlow>  lambda2= ChainWrappers.lambdaQueryChain(transactionFlowMapper);
+        LambdaQueryChainWrapper<TransactionFlow> lambda2 = ChainWrappers.lambdaQueryChain(transactionFlowMapper);
 //        LambdaQueryWrapper<Object> objectLambdaQueryWrapper = Wrappers.lambdaQuery();
 //        lambda2.list();
 
@@ -50,8 +52,6 @@ public class TransactionFlowService {
                 .build());
 
 
-
-
     }
 
     public void pageTest() {
@@ -59,6 +59,14 @@ public class TransactionFlowService {
         Page<TransactionFlow> page = ChainWrappers
                 .lambdaQueryChain(transactionFlowMapper)
                 .page(new Page<>(0, 10));
-        log.info("返回分页内容：{}",page);
+
+        log.info("返回分页内容：{}", JSON.toJSONString(page));
+    }
+
+
+    public void czEnumTest() {
+
+        List<TransactionFlow> transactionFlows = transactionFlowMapper.selectById(1L);
+        log.info("返回分页内容：{}", JSON.toJSONString(transactionFlows));
     }
 }

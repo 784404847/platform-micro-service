@@ -3,6 +3,7 @@ package com.mservice.transaction.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.mservice.transaction.model.TransactionFlow;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,9 +15,9 @@ import java.util.Map;
  * @author walle
  * @date 2020-08-30
  */
-@Repository
 @Mapper
+@Repository
 public interface TransactionFlowMapper extends BaseMapper<TransactionFlow> {
 
-    List<TransactionFlow> selectByQuery(Map<String, Object> columnMap);
+    List<TransactionFlow> selectById(@Param("id") Long id);
 }

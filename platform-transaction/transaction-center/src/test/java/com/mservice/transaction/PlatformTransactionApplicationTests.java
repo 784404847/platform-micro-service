@@ -21,4 +21,8 @@ class PlatformTransactionApplicationTests {
         transactionFlowService.pageTest();
     }
 
+    @Test
+    public void cuzTest() {
+        transactionFlowService.czEnumTest();
+    }
 }
