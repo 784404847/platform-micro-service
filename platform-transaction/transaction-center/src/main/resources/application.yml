@@ -19,46 +19,21 @@ spring:
             group: DEFAULT_GROUP
             refresh: true
         enabled: false
-
       discovery:
         enabled: false
 
   datasource:
-#    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/micro_service
     username: root
     password: 123456
-#    type: com.zaxxer.hikari.HikariDataSource
-#    hikari:
-#      minimum-idle: 5
-#      maximum-pool-size: 15
-#      auto-commit: true
-#      idle-timeout: 30000
-#      pool-name: DatebookHikariCP
-#      max-lifetime: 1800000
-#      connection-timeout: 30000
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      #cpu_core*2+磁盘数 = 4*2+7=
+      maximum-pool-size: 16
+      #db_wait_timeout-30s
+      max-lifetime: 86370000
 
-# tkmapper
-#mapper:
-#  mappers:
-#    - tk.mybatis.mapper.common.Mapper
-#  identity: MYSQL
-##  style: normal
-#
-## pageHelper
-#pagehelper:
-#  helper-dialect: mysql
-#  reasonable: false
-#  row-bounds-with-count: true
-#  support-methods-arguments: true
-
-# mybatis
-#mybatis:
-#  mapper-locations: classpath:com.mservice.transaction.mapper/*.xml
-#  type-aliases-package: com.mservice.transaction.model
-#  configuration:
-#    map-underscore-to-camel-case: true
-#    use-generated-keys: true
 
 mybatis-plus:
   configuration:
@@ -85,3 +60,12 @@ logging:
     com.baomidou.mybatisplus.samples: debug
     com.mservice.transaction: debug
 #    root: debug
+
+aliyun:
+  accessKey: LTAI4GFVcfLsCuZn856kcEx4
+  secret: JEzY5cbyRxJQuutFZIgtnIjlnD1pHj
+  rock:
+    enable: true
+    endpoint: http://1392465674862244.mqrest.cn-qingdao-public.aliyuncs.com
+    instanceId: MQ_INST_1392465674862244_BXaVUfMQ
+

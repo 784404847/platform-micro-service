@@ -10,6 +10,7 @@
     <properties>
         <java.version>1.8</java.version>
         <platform-common.version>1.0.0-SNAPSHOT</platform-common.version>
+        <platefor-starter>0.0.1-SNAPSHOT</platefor-starter>
     </properties>
 
     <parent>
@@ -19,15 +20,22 @@
     </parent>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>com.mew.mservice</groupId>
             <artifactId>platform-common</artifactId>
             <version>${platform-common.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.mservice.transaction</groupId>
+            <artifactId>platform-starter</artifactId>
+            <version>${platefor-starter}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -68,11 +76,14 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.mservice.transaction</groupId>-->
-<!--            <artifactId>platform-starter</artifactId>-->
-<!--            <version>0.0.1-SNAPSHOT</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.aliyun.mq</groupId>
+            <artifactId>mq-http-sdk</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.aliyun.openservices</groupId>
+            <artifactId>ons-client</artifactId>
+        </dependency>
     </dependencies>
 
       <profiles>

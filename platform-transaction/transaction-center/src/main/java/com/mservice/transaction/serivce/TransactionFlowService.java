@@ -9,6 +9,10 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.toolkit.ChainWrappers;
+import com.github.dadiyang.equator.Equator;
+import com.github.dadiyang.equator.FieldInfo;
+import com.github.dadiyang.equator.GetterBaseEquator;
+import com.mservice.transaction.enums.TxStatusEnum;
 import com.mservice.transaction.mapper.TransactionFlowMapper;
 import com.mservice.transaction.model.TransactionFlow;
 import lombok.extern.slf4j.Slf4j;
@@ -69,4 +73,17 @@ public class TransactionFlowService {
         List<TransactionFlow> transactionFlows = transactionFlowMapper.selectById(1L);
         log.info("返回分页内容：{}", JSON.toJSONString(transactionFlows));
     }
+
+    public void czSqlTest() {
+
+        LambdaQueryWrapper<TransactionFlow> queryWrapper =
+                new QueryWrapper<TransactionFlow>().lambda().eq(TransactionFlow::getId, 1L);
+
+        TransactionFlow transactionFlow = transactionFlowMapper.selectQueryWrapper(queryWrapper);
+        log.info("返回分页内容：{}", JSON.toJSONString(transactionFlow));
+
+    }
+
+
+
 }
