@@ -62,10 +62,8 @@ logging:
 #    root: debug
 
 aliyun:
-  accessKey: LTAI4GFVcfLsCuZn856kcEx4
-  secret: JEzY5cbyRxJQuutFZIgtnIjlnD1pHj
-  rock:
+  tcpRocket:
     enable: true
-    endpoint: http://1392465674862244.mqrest.cn-qingdao-public.aliyuncs.com
-    instanceId: MQ_INST_1392465674862244_BXaVUfMQ
+    nameSrvAddr: 1322
+    sendMsgTimeoutMillis: 1000
 

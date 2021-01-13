@@ -1,4 +1,4 @@
-package com.mservice.transaction.starter.aliyun.mq;
+package com.mservice.transaction.starter.aliyun.mq.http;
 
 import lombok.Data;
 
@@ -8,7 +8,7 @@ import lombok.Data;
  * @Date: 2020/12/15 下午3:52
  */
 @Data
-public class RocketProperties {
+public class HttpRocketProperties {
     private String endpoint;
     private String instanceId;
 }

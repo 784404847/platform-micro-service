@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.mservice.transaction</groupId>
     <artifactId>platform-starter</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>platform-starter</name>
     <description>Demo project for Spring Boot</description>
 
@@ -45,6 +45,10 @@
         <dependency>
             <groupId>com.aliyun.mq</groupId>
             <artifactId>mq-http-sdk</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.aliyun.openservices</groupId>
+            <artifactId>ons-client</artifactId>
         </dependency>
         <dependency>
             <groupId>com.mew.mservice</groupId>

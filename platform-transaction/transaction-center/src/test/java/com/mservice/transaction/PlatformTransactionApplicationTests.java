@@ -1,7 +1,7 @@
 package com.mservice.transaction;
 
 import com.mservice.transaction.serivce.HttpMqService;
-import com.mservice.transaction.serivce.MqService;
+import com.mservice.transaction.serivce.TcpMqService;
 import com.mservice.transaction.serivce.TransactionFlowService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +16,9 @@ class PlatformTransactionApplicationTests {
     private TransactionFlowService transactionFlowService;
     @Autowired
     private HttpMqService httpMqService;
+    @Autowired
+    private TcpMqService tcpMqService;
+
     @Test
     public void trans1Test() {
         transactionFlowService.selectTest();
@@ -45,4 +48,10 @@ class PlatformTransactionApplicationTests {
     public void mqgetlTest() {
         httpMqService.getMessage();
     }
+
+    @Test
+    public void mqSendTest() {
+        tcpMqService.sendMsg();
+    }
+
 }

@@ -1,4 +1,4 @@
-package com.mservice.transaction.starter.aliyun.mq;
+package com.mservice.transaction.starter.aliyun.mq.http;
 
 import com.aliyun.mq.http.MQClient;
 import com.mservice.transaction.starter.aliyun.AliyunProperties;
@@ -16,17 +16,17 @@ import org.springframework.context.annotation.Configuration;
  */
 @EnableConfigurationProperties(AliyunProperties.class)
 @Configuration
-@ConditionalOnProperty(prefix = "aliyun.rocket.enable", value = "enable", matchIfMissing = true)
-public class RockConfig {
+@ConditionalOnProperty(prefix = "aliyun.http.rocket.enable", value = "enable", matchIfMissing = true)
+public class HttpRocketConfig {
 
     @Autowired
     private AliyunProperties aliyunProperties;
 
     @Bean(destroyMethod = "close")
-    public MQClient mqClient(){
-       return new MQClient(
+    public MQClient mqClient() {
+        return new MQClient(
                 // 设置HTTP接入域名（此处以公共云生产环境为例）
-                aliyunProperties.getRock().getEndpoint(),
+                aliyunProperties.getHttpRocket().getEndpoint(),
                 // AccessKey 阿里云身份验证，在阿里云服务器管理控制台创建
                 aliyunProperties.getAccessKey(),
                 // SecretKey 阿里云身份验证，在阿里云服务器管理控制台创建
@@ -36,13 +36,13 @@ public class RockConfig {
 
     @Bean
     @ConditionalOnBean({MQClient.class, AliyunProperties.class})
-    public AliyunMqConsumer aliyunMqConsumer(){
-        return new AliyunMqConsumer();
+    public HttpAliyunMqConsumer aliyunMqConsumer() {
+        return new HttpAliyunMqConsumer();
     }
 
     @Bean
     @ConditionalOnBean({MQClient.class, AliyunProperties.class})
-    public AliyunMqProducer aliyunMqProducer(){
-        return new AliyunMqProducer();
+    public HttpAliyunMqProducer aliyunMqProducer() {
+        return new HttpAliyunMqProducer();
     }
 }

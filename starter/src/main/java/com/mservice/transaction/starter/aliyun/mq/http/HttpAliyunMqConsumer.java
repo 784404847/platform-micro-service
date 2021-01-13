@@ -1,4 +1,4 @@
-package com.mservice.transaction.starter.aliyun.mq;
+package com.mservice.transaction.starter.aliyun.mq.http;
 
 import com.aliyun.mq.http.MQClient;
 import com.aliyun.mq.http.MQConsumer;
@@ -18,7 +18,7 @@ import java.util.function.Function;
  * @Date: 2020/12/16 上午11:04
  */
 @Component
-public class AliyunMqConsumer {
+public class HttpAliyunMqConsumer {
 
     @Autowired
     private MQClient mqClient;
@@ -40,7 +40,7 @@ public class AliyunMqConsumer {
         if (StringUtils.isNotBlank(instanceId)) {
             consumer = mqClient.getConsumer(instanceId, topic, groupId, messageTag);
         } else {
-            consumer = mqClient.getConsumer(aliyunProperties.getRock().getInstanceId(), topic, groupId, messageTag);
+            consumer = mqClient.getConsumer(aliyunProperties.getHttpRocket().getInstanceId(), topic, groupId, messageTag);
         }
 
         List<Message> messages = consumer.consumeMessage(1, 1);

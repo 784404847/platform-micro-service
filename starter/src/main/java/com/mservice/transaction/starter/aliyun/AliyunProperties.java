@@ -1,6 +1,7 @@
 package com.mservice.transaction.starter.aliyun;
 
-import com.mservice.transaction.starter.aliyun.mq.RocketProperties;
+import com.mservice.transaction.starter.aliyun.mq.http.HttpRocketProperties;
+import com.mservice.transaction.starter.aliyun.mq.tcp.TcpRocketProperties;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -14,5 +15,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class AliyunProperties {
     private String accessKey;
     private String secret;
-    private RocketProperties rock;
+    private HttpRocketProperties httpRocket;
+    private TcpRocketProperties tcpRocket;
+
 }

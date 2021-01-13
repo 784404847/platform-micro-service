@@ -1,3 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 com.mservice.transaction.starter.mp.MybatisPlusConfig,\
-com.mservice.transaction.starter.aliyun.mq.RockConfig
+com.mservice.transaction.starter.aliyun.mq.http.HttpRocketConfig,\
+com.mservice.transaction.starter.aliyun.mq.tcp.TcpRocketConfig  

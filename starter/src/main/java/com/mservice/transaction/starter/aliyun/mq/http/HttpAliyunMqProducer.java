@@ -1,4 +1,4 @@
-package com.mservice.transaction.starter.aliyun.mq;
+package com.mservice.transaction.starter.aliyun.mq.http;
 
 import com.aliyun.mq.http.MQClient;
 import com.aliyun.mq.http.MQProducer;
@@ -7,7 +7,6 @@ import com.mservice.transaction.starter.aliyun.AliyunProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.stereotype.Component;
 
 
@@ -18,7 +17,7 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-public class AliyunMqProducer {
+public class HttpAliyunMqProducer {
 
     @Autowired
     private MQClient mqClient;
@@ -33,7 +32,7 @@ public class AliyunMqProducer {
         if (StringUtils.isNotBlank(instanceId)) {
             producer = mqClient.getProducer(instanceId, topic);
         } else {
-            producer = mqClient.getProducer(aliyunProperties.getRock().getInstanceId(),topic);
+            producer = mqClient.getProducer(aliyunProperties.getHttpRocket().getInstanceId(),topic);
         }
 
         TopicMessage msg = new TopicMessage(content.getBytes(),tag);
