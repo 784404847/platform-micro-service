@@ -15,7 +15,7 @@ import java.util.function.Function;
  * @Description
  * @Date: 2020/12/16 下午5:05
  */
-@Service
+//@Service
 public class HttpMqService {
 
     @Autowired

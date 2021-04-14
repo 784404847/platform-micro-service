@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
  * @Date: 2020/12/15 下午5:36
  */
 @Slf4j
-@Component
+//@Component
 public class TcpAliyunMqProducer {
 
     @Autowired

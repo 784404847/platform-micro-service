@@ -3,7 +3,7 @@ FROM registry.cn-hangzhou.aliyuncs.com/wwj_dev/jdk1.8:1.0
 MAINTAINER JAVER <wejam>
 
 # 1. JVM配置： docker-compose.yml中根据具体环境需改配置
-ENV JVM_OPTS -Xmx1344M -Xms1344M -XX:MaxMetaspaceSize=256M -XX:MetaspaceSize=256M -XX:+UseG1GC -XX:MaxGCPauseMillis=100 -XX:+ParallelRefProcEnabled
+ENV JVM_OPTS -Xmx300M -Xms200M -XX:MaxMetaspaceSize=256M -XX:MetaspaceSize=256M -XX:+UseG1GC -XX:MaxGCPauseMillis=100 -XX:+ParallelRefProcEnabled
 # 2. 程序运行环境： docker-compose.yml中根据具体环境修改配置  dev|test1|test2|uat|prod
 ENV PROFILES_ACTIVE micro-dev
 # 3. nacos服务配置文件地址： docker-compose.yml中根据具体环境需改配置
@@ -27,4 +27,4 @@ ADD target/${JAVA_FILE} /${JAVA_FILE}
 # 6. 服务端口输出
 EXPOSE 8001
 
-ENTRYPOINT ["sh", "-c", "java ${JVM_OPTS} ${SKY_WALKING_AGENT} -jar /platform-transaction-center.jar --spring.cloud.nacos.config.server-addr=${SERVER_ADDR} --spring.cloud.nacos.config.username=${NACOS_USERNAME} --spring.cloud.nacos.config.password=${NACOS_PASSWORD} --spring.profiles.active=${PROFILES_ACTIVE}"]
+ENTRYPOINT ["sh", "-c", "java ${JVM_OPTS} -jar /transaction-center.jar --spring.cloud.nacos.config.server-addr=${SERVER_ADDR} --spring.cloud.nacos.config.username=${NACOS_USERNAME} --spring.cloud.nacos.config.password=${NACOS_PASSWORD} --spring.profiles.active=${PROFILES_ACTIVE}"]

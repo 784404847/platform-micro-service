@@ -23,9 +23,9 @@ import java.util.Properties;
  * @Date: 2021/1/5 上午11:11
  */
 
-@EnableConfigurationProperties(AliyunProperties.class)
-@Configuration
-@ConditionalOnProperty(prefix = "aliyun.tcpRocket.enable", value = "enable", matchIfMissing = true)
+//@EnableConfigurationProperties(AliyunProperties.class)
+//@Configuration
+//@ConditionalOnProperty(prefix = "aliyun.tcpRocket.enable", value = "enable", matchIfMissing = true)
 public class TcpRocketConfig {
 
     @Autowired

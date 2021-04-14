@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
  * @Description
  * @Date: 2021/1/5 下午3:12
  */
-@Service
+//@Service
 public class TcpMqService {
 
     @Autowired

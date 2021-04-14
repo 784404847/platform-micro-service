@@ -17,7 +17,7 @@ import java.util.function.Function;
  * @Description
  * @Date: 2020/12/16 上午11:04
  */
-@Component
+//@Component
 public class HttpAliyunMqConsumer {
 
     @Autowired

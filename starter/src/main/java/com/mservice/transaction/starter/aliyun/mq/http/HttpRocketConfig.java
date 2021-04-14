@@ -14,9 +14,9 @@ import org.springframework.context.annotation.Configuration;
  * @Description
  * @Date: 2020/12/15 下午3:52
  */
-@EnableConfigurationProperties(AliyunProperties.class)
-@Configuration
-@ConditionalOnProperty(prefix = "aliyun.http.rocket.enable", value = "enable", matchIfMissing = true)
+//@EnableConfigurationProperties(AliyunProperties.class)
+//@Configuration
+//@ConditionalOnProperty(prefix = "aliyun.http.rocket.enable", value = "enable", matchIfMissing = true)
 public class HttpRocketConfig {
 
     @Autowired
