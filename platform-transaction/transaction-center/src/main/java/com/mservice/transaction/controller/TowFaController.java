@@ -21,45 +21,45 @@ public class TowFaController {
     private static final String KEY_FORMAT = "otpauth://totp/%s?secret=%s";
     private static final GoogleAuthenticator googleAuthenticator = new GoogleAuthenticator();
 
-    public static void main(String[] args) {
-
-        //key WP56BJUY6CNMBJRLTV5QYC2C7NOJWA5D
-//        GoogleAuthenticator gAuth = new GoogleAuthenticator();
-//        final GoogleAuthenticatorKey gKey = gAuth.createCredentials();
-//        String key = gKey.getKey();
-//        System.out.println("key:"+key);
-
-        //secret valid
-//        GoogleAuthenticator gAuth = new GoogleAuthenticator();
-//        int code = gAuth.getTotpPassword(SECRET_KEY);
-//        System.out.println("code:"+code);
+//    public static void main(String[] args) {
 //
-//        boolean isCodeValid = gAuth.authorize(SECRET_KEY, code);
+//        //key WP56BJUY6CNMBJRLTV5QYC2C7NOJWA5D
+////        GoogleAuthenticator gAuth = new GoogleAuthenticator();
+////        final GoogleAuthenticatorKey gKey = gAuth.createCredentials();
+////        String key = gKey.getKey();
+////        System.out.println("key:"+key);
 //
-//        System.out.println("result:"+isCodeValid);
-
-
-        googleAuthenticator.setCredentialRepository(new ICredentialRepository() {
-            @Override
-            public String getSecretKey(String userName) {
-
-                return "USCWFXIRZDO4KDGF5NGPMDEJKPZBQNLH";
-            }
-
-            @Override
-            public void saveUserCredentials(String s, String s1, int i, List<Integer> list) {
-                return;
-            }
-
-        });
+//        //secret valid
+////        GoogleAuthenticator gAuth = new GoogleAuthenticator();
+////        int code = gAuth.getTotpPassword(SECRET_KEY);
+////        System.out.println("code:"+code);
+////
+////        boolean isCodeValid = gAuth.authorize(SECRET_KEY, code);
+////
+////        System.out.println("result:"+isCodeValid);
 //
-//        String wwj = getQrUrl("wwj");
+//
+//        googleAuthenticator.setCredentialRepository(new ICredentialRepository() {
+//            @Override
+//            public String getSecretKey(String userName) {
+//
+//                return "USCWFXIRZDO4KDGF5NGPMDEJKPZBQNLH";
+//            }
+//
+//            @Override
+//            public void saveUserCredentials(String s, String s1, int i, List<Integer> list) {
+//                return;
+//            }
+//
+//        });
+////
+////        String wwj = getQrUrl("wwj");
+////        System.out.println(wwj);
+//
+//        boolean wwj = validCode("wwj", 588979);
 //        System.out.println(wwj);
-
-        boolean wwj = validCode("wwj", 588979);
-        System.out.println(wwj);
-
-    }
+//
+//    }
 
 
 

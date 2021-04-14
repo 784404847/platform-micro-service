@@ -76,19 +76,29 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.aliyun.mq</groupId>-->
+<!--            <artifactId>mq-http-sdk</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.aliyun.openservices</groupId>-->
+<!--            <artifactId>ons-client</artifactId>-->
+<!--        </dependency>-->
         <dependency>
-            <groupId>com.aliyun.mq</groupId>
-            <artifactId>mq-http-sdk</artifactId>
+            <groupId>com.warrenstrange</groupId>
+            <artifactId>googleauth</artifactId>
+            <version>1.5.0</version>
         </dependency>
         <dependency>
-            <groupId>com.aliyun.openservices</groupId>
-            <artifactId>ons-client</artifactId>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>javase</artifactId>
+            <version>3.3.3</version>
         </dependency>
     </dependencies>
 
       <profiles>
         <profile>
-            <id>local</id>
+            <id>dev</id>
             <properties>
                 <!-- aliyun 容器仓库路径-->
                 <docker.repository>registry.cn-hangzhou.aliyuncs.com</docker.repository>
@@ -98,42 +108,6 @@
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-        </profile>
-        <profile>
-            <id>dev</id>
-            <properties>
-                <!-- aliyun 容器仓库路径-->
-                <docker.repository>registry.cn-hangzhou.aliyuncs.com</docker.repository>
-                <!-- aliyun 容器仓库命名空间 -->
-                <docker.repository.namespace>wwj_dev</docker.repository.namespace>
-            </properties>
-        </profile>
-        <profile>
-            <id>test</id>
-            <properties>
-                <!-- aliyun 容器仓库路径-->
-                <docker.repository>registry.cn-hangzhou.aliyuncs.com</docker.repository>
-                <!-- aliyun 容器仓库命名空间 -->
-                <docker.repository.namespace>wwj_dev</docker.repository.namespace>
-            </properties>
-        </profile>
-        <profile>
-            <id>uat</id>
-            <properties>
-                <!-- aliyun 容器仓库路径-->
-                <docker.repository>registry.cn-hangzhou.aliyuncs.com</docker.repository>
-                <!-- aliyun 容器仓库命名空间 -->
-                <docker.repository.namespace>wwj_dev</docker.repository.namespace>
-            </properties>
-        </profile>
-        <profile>
-            <id>prod</id>
-            <properties>
-                <!-- aliyun 容器仓库路径-->
-                <docker.repository>registry.cn-hangzhou.aliyuncs.com</docker.repository>
-                <!-- aliyun 容器仓库命名空间 -->
-                <docker.repository.namespace>wwj_dev</docker.repository.namespace>
-            </properties>
         </profile>
     </profiles>
 

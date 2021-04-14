@@ -25,6 +25,6 @@ ARG JAVA_FILE
 ADD target/${JAVA_FILE} /${JAVA_FILE}
 
 # 6. 服务端口输出
-EXPOSE 8000
+EXPOSE 8001
 
-ENTRYPOINT ["sh", "-c", "java ${JVM_OPTS} ${SKY_WALKING_AGENT} -jar /platform-gateway.jar --spring.cloud.nacos.config.server-addr=${SERVER_ADDR} --spring.cloud.nacos.config.username=${NACOS_USERNAME} --spring.cloud.nacos.config.password=${NACOS_PASSWORD} --spring.profiles.active=${PROFILES_ACTIVE}"]
+ENTRYPOINT ["sh", "-c", "java ${JVM_OPTS} ${SKY_WALKING_AGENT} -jar /platform-transaction-center.jar --spring.cloud.nacos.config.server-addr=${SERVER_ADDR} --spring.cloud.nacos.config.username=${NACOS_USERNAME} --spring.cloud.nacos.config.password=${NACOS_PASSWORD} --spring.profiles.active=${PROFILES_ACTIVE}"]
