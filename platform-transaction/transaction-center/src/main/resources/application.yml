@@ -18,9 +18,9 @@ spring:
           - dataId: common-actuator.yml
             group: DEFAULT_GROUP
             refresh: true
-        enabled: false
+        enabled: true
       discovery:
-        enabled: false
+        enabled: true
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver

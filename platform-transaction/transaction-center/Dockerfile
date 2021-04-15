@@ -7,7 +7,7 @@ ENV JVM_OPTS -Xmx300M -Xms200M -XX:MaxMetaspaceSize=256M -XX:MetaspaceSize=256M 
 # 2. 程序运行环境： docker-compose.yml中根据具体环境修改配置  dev|test1|test2|uat|prod
 ENV PROFILES_ACTIVE micro-dev
 # 3. nacos服务配置文件地址： docker-compose.yml中根据具体环境需改配置
-ENV SERVER_ADDR 127.0.0.1:8848
+ENV SERVER_ADDR 192.168.3.54:8848
 ## 3.1 如果nacos启动认证,将认证信息作为环境变量
 ENV NACOS_USERNAME nacos
 ENV NACOS_PASSWORD nacos
