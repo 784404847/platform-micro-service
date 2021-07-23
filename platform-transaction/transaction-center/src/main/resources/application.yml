@@ -7,19 +7,19 @@ spring:
     active: micro-dev
   cloud:
     nacos:
+      server-addr: 127.0.0.1:8848
       config:
-        server-addr: 192.168.3.54:8848
         file-extension: yml
         group: DEFAULT_GROUP
         namespace: ${spring.profiles.active}
-        username: nacos
-        password: nacos
+        enabled: true
         shared-configs:
           - dataId: common-actuator.yml
             group: DEFAULT_GROUP
             refresh: true
-        enabled: true
       discovery:
+        group: DEFAULT_GROUP
+        namespace: ${spring.profiles.active}
         enabled: true
 
   datasource:
@@ -71,3 +71,21 @@ aliyun:
     instanceId: MQ_INST_1392465674862244_BXaVUfMQ
     nameSrvAddr: 1322
     sendMsgTimeoutMillis: 1000
+
+my:
+  i18n:
+    enabled: true
+  http:
+    enabled: true
+    retry: false
+    connectTimeout: 15s
+    readTimeout: 15s
+    writeTimeout: 15s
+    pool:
+      maxIdleConnections: 5
+      keepAliveDuration: 5m
+    proxy:
+      enabled: false
+      host: 127.0.0.1
+      port: 1087
+      type: HTTP

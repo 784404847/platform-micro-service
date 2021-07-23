@@ -17,7 +17,7 @@ ENV NACOS_PASSWORD nacos
 ## 4.3. collector.backend_service： agent需要同collector进行数据传输的IP和端口
 ## 4.4. logging.level: agent：记录日志级别
 ## 4.5. agent.authentication: 与collector进行通信的安全认证，需要同collector中配置相同
-ENV SKY_WALKING_AGENT -javaagent:/skywalking/skywalking-agent.jar -Dskywalking.agent.service_name=platform-gateway -Dskywalking.collector.backend_service=127.0.0.1:11800
+ENV SKY_WALKING_AGENT -javaagent:/skywalking/agent/skywalking-agent.jar -Dskywalking.agent.service_name=platform-transaction -Dskywalking.collector.backend_service=127.0.0.1:11800
 # -Dskywalking.agent.sample_n_per_3_secs=1
 #
 # # 5. SKY_WALKING_AGENT配置加载
@@ -27,4 +27,4 @@ ADD target/${JAVA_FILE} /${JAVA_FILE}
 # 6. 服务端口输出
 EXPOSE 8001
 
-ENTRYPOINT ["sh", "-c", "java ${JVM_OPTS} -jar /transaction-center.jar --spring.cloud.nacos.config.server-addr=${SERVER_ADDR} --spring.cloud.nacos.config.username=${NACOS_USERNAME} --spring.cloud.nacos.config.password=${NACOS_PASSWORD} --spring.profiles.active=${PROFILES_ACTIVE}"]
+ENTRYPOINT ["sh", "-c", "java ${JVM_OPTS} ${SKY_WALKING_AGENT} -jar /transaction-center.jar --spring.cloud.nacos.config.server-addr=${SERVER_ADDR} --spring.cloud.nacos.config.username=${NACOS_USERNAME} --spring.cloud.nacos.config.password=${NACOS_PASSWORD} --spring.profiles.active=${PROFILES_ACTIVE}"]
