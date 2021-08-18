@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.toolkit.Constants;
 import com.mservice.transaction.model.TransactionFlow;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -27,4 +28,11 @@ public interface TransactionFlowMapper extends BaseMapper<TransactionFlow> {
 
     @Select(value = "select * from transaction_flow ${ew.customSqlSegment}")
     TransactionFlow selectQueryWrapper(@Param(Constants.WRAPPER) Wrapper queryWrapper);
+
+    void updateCuz(@Param("flowNo") String flowNo);
+
+    void updateCuz1(@Param("flowNo") String flowNo);
+
+    @Delete("delete FROM transaction_flow")
+    void deleteAll();
 }

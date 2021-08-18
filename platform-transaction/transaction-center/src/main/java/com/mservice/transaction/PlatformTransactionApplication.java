@@ -14,7 +14,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @SpringCloudApplication
 @EnableDiscoveryClient
 public class PlatformTransactionApplication {
-
+    //-javaagent:/Users/wuwenjun/Documents/skywalking/agent/skywalking-agent.jar -Dskywalking.agent.service_name=platform-transaction -Dskywalking.collector.backend_service=127.0.0.1:11800
     public static void main(String[] args) {
         SpringApplication.run(PlatformTransactionApplication.class, args);
     }

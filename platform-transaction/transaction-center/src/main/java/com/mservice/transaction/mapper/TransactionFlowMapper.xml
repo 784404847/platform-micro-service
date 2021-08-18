@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mservice.transaction.mapper.TransactionFlowMapper">
+    <update id="updateCuz">
+        update transaction_flow set transaction_amount ='-1'
+        <where>
+            transaction_amount = '101'
+            and flow_no =#{flowNo}
+        </where>
+
+    </update>
+    <update id="updateCuz1">
+        update transaction_flow set transaction_amount ='-2' , transaction_time='2021-01-01 00:00:00'
+        <where>
+            flow_no =#{flowNo}
+        </where>
+    </update>
     <select id="selectById" resultType="com.mservice.transaction.model.TransactionFlow">
         select  * from transaction_flow where id = #{id}
     </select>
