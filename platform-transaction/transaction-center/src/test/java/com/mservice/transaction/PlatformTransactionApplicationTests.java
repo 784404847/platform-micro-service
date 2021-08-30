@@ -23,7 +23,7 @@ class PlatformTransactionApplicationTests {
         transactionFlowMapper.deleteAll();
 
         //验证锁表的情况
-        for(int i=0;i<10000;i++) {
+        for (int i = 0; i < 10000; i++) {
 
             TransactionFlow.builder()
                     .flowNo((long) i)
