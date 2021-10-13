@@ -33,9 +33,9 @@ spring:
       maximum-pool-size: 16
       #db_wait_timeout-30s
       max-lifetime: 86370000
-  data:
-    mongodb:
-      uri: mongodb://root:123456@127.0.0.1:27017/dev
+#  data:
+#    mongodb:
+#      uri: mongodb://root:123456@127.0.0.1:27017/dev
 
 mybatis-plus:
   configuration:
