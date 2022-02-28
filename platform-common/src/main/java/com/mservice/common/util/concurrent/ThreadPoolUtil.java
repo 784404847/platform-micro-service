@@ -1,9 +1,9 @@
 package com.mservice.common.util.concurrent;
 
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @Author: wejam
@@ -23,6 +23,8 @@ public class ThreadPoolUtil {
 
     /**
      * 通用线程池工具类
+     * 有界队列
+     * 队列满则由回调线程去执行
      *
      * @return
      */
@@ -60,6 +62,10 @@ public class ThreadPoolUtil {
         return getThreadPool(-1, -1, "common");
     }
 
+    public static ExecutorService getSinglePool() {
+        return getThreadPool(1, 1, "single");
+    }
+
     /**
      * 线程命名
      *
@@ -67,8 +73,7 @@ public class ThreadPoolUtil {
      * @return
      */
     private static ThreadFactory getThreadFactory(String poolName) {
-        return new ThreadFactoryBuilder()
-                .setNameFormat(poolName + "-thread-%d").build();
+        return new TypicalThreadFactory(poolName + "-thread-%d");
     }
 
 
@@ -81,14 +86,27 @@ public class ThreadPoolUtil {
         return new LinkedBlockingQueue<>();
     }
 
-    public static void main(String[] args) {
-        ThreadPoolExecutor abv = getCommonThreadPool();
+    private static class TypicalThreadFactory implements ThreadFactory {
 
-        for (int i = 0; i < 1000; i++) {
-            int finalI = i;
-            abv.execute(() -> System.out.println(finalI));
+        private final ThreadGroup group;
+        private final AtomicInteger threadNumber = new AtomicInteger(1);
+        private final String namePrefix;
+
+        public TypicalThreadFactory(String poolName) {
+            SecurityManager s = System.getSecurityManager();
+            this.group = (s != null) ? s.getThreadGroup() :
+                    Thread.currentThread().getThreadGroup();
+            this.namePrefix = "pl-" + poolName + "-t-";
         }
 
+        @Override
+        public Thread newThread(Runnable r) {
+            Thread thread = new Thread(group, r, namePrefix + threadNumber.getAndIncrement(), 0);
+            thread.setUncaughtExceptionHandler((t, e) -> {
+                log.error(thread.getName(), e);
+            });
+            return thread;
+        }
     }
 
 }
